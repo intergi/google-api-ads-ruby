@@ -63,7 +63,7 @@ def update_ad_units()
         :size => {
           :width => 1,
           :height => 1,
-          :is_aspect_ration => false
+          :is_aspect_ratio => false
         },
         :environment_type => 'BROWSER'
     }

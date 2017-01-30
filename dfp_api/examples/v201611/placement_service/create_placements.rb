@@ -66,7 +66,7 @@ def create_placements()
   # Separate the ad units by size.
   if page and page[:results]
     page[:results].each do |ad_unit|
-      if ad_unit[:parent_id] and ad_unit[:sizes]
+      if ad_unit[:parent_id] and ad_unit[:ad_unit_sizes]
         ad_unit[:ad_unit_sizes].each do |ad_unit_size|
           size = ad_unit_size[:size]
           receiver = case size[:width]
@@ -88,7 +88,7 @@ def create_placements()
   non_empty_placements = [
       medium_square_ad_unit_placement,
       skyscraper_ad_unit_placement,
-      banner_ad_unit_placement].delete_if {|plc| plc.empty?}
+      banner_ad_unit_placement].delete_if {|plc| plc[:targeted_ad_unit_ids].empty?}
 
   # Create the placements on the server.
   placements = placement_service.create_placements(non_empty_placements)

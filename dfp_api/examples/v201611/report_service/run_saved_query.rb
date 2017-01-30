@@ -54,7 +54,7 @@ def run_saved_query(saved_query_id)
       statement.toStatement())
 
   unless saved_query_page[:results].nil?
-    saved_query = response[:results].first
+    saved_query = saved_query_page[:results].first
 
     if saved_query[:is_compatible_with_api_version]
       # Create report job.
